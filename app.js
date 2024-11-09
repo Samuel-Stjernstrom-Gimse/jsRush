@@ -1,5 +1,5 @@
-import Component from "./framework/component.js";
-import MyComponent from "./script/test.js";
+import Component from "./src/framework/component.js";
+import MyComponent from "./src/script/test.js";
 
 class App extends Component {
     render() {
