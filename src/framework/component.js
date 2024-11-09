@@ -71,6 +71,15 @@ class Component extends Construct {
             callback();
         });
     }
+
+    select(target) {
+        return this.shadowRoot.querySelector(`${target}`)
+    }
+
+    selectAll(target) {
+        return this.shadowRoot.querySelectorAll(`${target}`)
+    }
+
 }
 
 export default Component;

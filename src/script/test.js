@@ -1,6 +1,16 @@
 import Component from "../framework/component.js";
 
 class MyComponent extends Component {
+    handleClick() {
+        this.subState.value++;
+        this.select('#img-cone').style.transform = 'scale(1.1)';
+
+        setTimeout(() => {
+            this.select('#img-cone').style.transform = 'scale(1)';
+        }, 100);
+    }
+
+
     render() {
         this.css(`
             div {
@@ -12,6 +22,7 @@ class MyComponent extends Component {
             
             img {
                 height: 10rem;
+                transition: 0.1s;
             }
             
             img:hover {
@@ -22,13 +33,13 @@ class MyComponent extends Component {
 
         this.html(`
             <div>
-                <img src="https://www.svgrepo.com/show/10031/traffic-cone.svg" alt="cone">
+                <img id="img-cone" src="https://www.svgrepo.com/show/10031/traffic-cone.svg" alt="cone">
                 <h1>${this.params.value}</h1>
                 <button id="btn">count is ${this.subState.value} </button>
             </div>
         `)
 
-        this.attachEvent('#btn', 'click', () => this.subState.value  ++);
+        this.attachEvent('#btn', 'click', () => this.handleClick());
     }
 }
 
