@@ -22,7 +22,7 @@ class MyComponent extends Component {
 
         this.html(`
             <div>
-                <img src="/../misc/traffic-cone-svgrepo-com.svg" alt="cone">
+                <img src="https://www.svgrepo.com/show/10031/traffic-cone.svg" alt="cone">
                 <h1>${this.params.value}</h1>
                 <button id="btn">count is ${this.subState.value} </button>
             </div>
