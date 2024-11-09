@@ -12,7 +12,6 @@ class State {
         this._state = initialState;
         this.subscribers = [];
     }
-
     /**
      * Gets the current state value.
      *
@@ -33,7 +32,6 @@ class State {
             this.notify();
         }
     }
-
     /**
      * Subscribes a new subscriber to state changes.
      *
@@ -42,7 +40,6 @@ class State {
     subscribe(subscriber) {
         this.subscribers.push(subscriber);
     }
-
     /**
      * Subscribes a new subscriber that has a render method to be called on state changes.
      *
@@ -52,7 +49,6 @@ class State {
     subRender(subscriber) {
         this.subscribers.push(() => subscriber.render());
     }
-
     /**
      * Notifies all subscribers of a state change by calling their respective callback functions.
      */
