@@ -61,15 +61,20 @@ class Component extends Construct {
 
     /**
      * Attaches an event listener to a target element within the component's shadow DOM.
-     *
+     * removes all duplicate listeners on elements
      * @param {string} target - The selector string of the target element to attach the event listener to.
      * @param {string} listener - The event type (e.g., 'click', 'mouseover') to listen for.
      * @param {Function} callback - The callback function to invoke when the event is triggered.
      */
     attachEvent(target, listener, callback) {
-        this.shadowRoot.querySelector(`${target}`).addEventListener(`${listener}`, () => {
+        const element = this.shadowRoot.querySelector(`${target}`);
+
+        const eventHandler = () => {
             callback();
-        });
+        };
+
+        element?.removeEventListener(listener, eventHandler);
+        element?.addEventListener(listener, eventHandler);
     }
 
     select(target) {

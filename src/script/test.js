@@ -3,13 +3,12 @@ import Component from "../framework/component.js";
 class MyComponent extends Component {
     handleClick() {
         this.subState.value++;
-        this.select('#img-cone').style.transform = 'scale(1.1)';
 
-        setTimeout(() => {
-            this.select('#img-cone').style.transform = 'scale(1)';
-        }, 100);
+        const imgCone = this.select('#img-cone');
+
+        imgCone.style.transform = 'scale(1.1)';
+        setTimeout(() => imgCone.style.transform = 'scale(1)', 100);
     }
-
 
     render() {
         this.css(`
