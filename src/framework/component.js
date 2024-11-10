@@ -22,7 +22,7 @@ class Component extends Construct {
          * @type {State}
          * State object for managing the 'params' property with an initial value of {name: 'samuel', params: ''}.
          */
-        this.params = new State({ name: 'samuel', params: '' });
+        this.params = new State('');
 
         /**
          * @type {State}
