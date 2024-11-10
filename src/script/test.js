@@ -1,9 +1,9 @@
 import Component from "../framework/component.js";
+import Cones from "./cones.js";
 
 class MyComponent extends Component {
     handleClick() {
         this.subState.value++;
-
         const imgCone = this.select('#img-cone');
 
         imgCone.style.transform = 'scale(1.1)';
@@ -35,6 +35,7 @@ class MyComponent extends Component {
                 <img id="img-cone" src="https://www.svgrepo.com/show/10031/traffic-cone.svg" alt="cone">
                 <h1>${this.params.value}</h1>
                 <button id="btn">count is ${this.subState.value} </button>
+                <cone-cones params='${this.subState.value}'></cone-cones>
             </div>
         `)
 
@@ -42,4 +43,5 @@ class MyComponent extends Component {
     }
 }
 
+customElements.define('cone-cones', Cones)
 export default MyComponent;
