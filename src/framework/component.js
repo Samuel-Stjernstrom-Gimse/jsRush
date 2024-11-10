@@ -22,7 +22,7 @@ class Component extends Construct {
          * @type {State}
          * State object for managing the 'params' property with an initial value of {name: 'samuel', params: ''}.
          */
-        this.params = new State({name: 'samuel', params: ''});
+        this.params = new State({ name: 'samuel', params: '' });
 
         /**
          * @type {State}
@@ -61,7 +61,8 @@ class Component extends Construct {
 
     /**
      * Attaches an event listener to a target element within the component's shadow DOM.
-     * removes all duplicate listeners on elements
+     * Removes all duplicate listeners on elements.
+     *
      * @param {string} target - The selector string of the target element to attach the event listener to.
      * @param {string} listener - The event type (e.g., 'click', 'mouseover') to listen for.
      * @param {Function} callback - The callback function to invoke when the event is triggered.
@@ -77,14 +78,25 @@ class Component extends Construct {
         element?.addEventListener(listener, eventHandler);
     }
 
+    /**
+     * Selects a single element within the component's shadow DOM based on the provided selector.
+     *
+     * @param {string} target - The CSS selector string of the element to select.
+     * @returns {Element | null} The first element matching the selector, or null if no element matches.
+     */
     select(target) {
-        return this.shadowRoot.querySelector(`${target}`)
+        return this.shadowRoot.querySelector(`${target}`);
     }
 
+    /**
+     * Selects all elements within the component's shadow DOM that match the provided selector.
+     *
+     * @param {string} target - The CSS selector string of the elements to select.
+     * @returns {NodeListOf<Element>} A NodeList of all matching elements within the shadow DOM.
+     */
     selectAll(target) {
-        return this.shadowRoot.querySelectorAll(`${target}`)
+        return this.shadowRoot.querySelectorAll(`${target}`);
     }
-
 }
 
 export default Component;
