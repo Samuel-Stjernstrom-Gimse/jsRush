@@ -35,6 +35,12 @@ class Component extends Construct {
         this.params.subRender(this);
     }
 
+    newState(value) {
+        const state = new State(value);
+        state.subRender(this);
+        return  state
+    }
+
     /**
      * Specifies the observed attributes for the component.
      * When any of these attributes change, the `attributeChangedCallback` method will be triggered.
