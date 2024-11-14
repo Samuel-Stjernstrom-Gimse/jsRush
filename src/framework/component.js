@@ -7,6 +7,18 @@ import State from "./state.js";
  *
  * @class
  * @extends Construct
+ * @example
+ * ```js
+ *  class Test extends Component {
+ *      constructor() {
+ *         super()
+ *      }
+ *      render() {
+ *         this.css(``)
+ *         this.html(``)
+ *     }
+ *  }
+ * ```
  */
 class Component extends Construct {
     /**
@@ -33,6 +45,7 @@ class Component extends Construct {
         // Bind subState and params to render updates
         this.subState.subRender(this);
         this.params.subRender(this);
+
     }
 
     newState(value) {
@@ -40,7 +53,6 @@ class Component extends Construct {
         state.subRender(this);
         return  state
     }
-
     /**
      * Specifies the observed attributes for the component.
      * When any of these attributes change, the `attributeChangedCallback` method will be triggered.
@@ -50,7 +62,6 @@ class Component extends Construct {
     static get observedAttributes() {
         return ['params'];
     }
-
     /**
      * Callback method for when an observed attribute changes.
      * Updates the `params` value based on the new attribute value.
@@ -74,8 +85,8 @@ class Component extends Construct {
      * @param {Function} callback - The callback function to invoke when the event is triggered.
      */
     attachEvent(target, listener, callback) {
-        const element = this.shadowRoot.querySelector(`${target}`);
 
+        const element = this.shadowRoot.querySelector(`${target}`);
         const eventHandler = () => {
             callback();
         };
@@ -97,11 +108,11 @@ class Component extends Construct {
     /**
      * Selects all elements within the component's shadow DOM that match the provided selector.
      *
-     * @param {string} target - The CSS selector string of the elements to select.
+     * @param {string} targets - The CSS selector string of the elements to select.
      * @returns {NodeListOf<Element>} A NodeList of all matching elements within the shadow DOM.
      */
-    selectAll(target) {
-        return this.shadowRoot.querySelectorAll(`${target}`);
+    selectAll(targets) {
+        return this.shadowRoot.querySelectorAll(`${targets}`);
     }
 }
 
