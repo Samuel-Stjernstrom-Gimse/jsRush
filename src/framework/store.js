@@ -1,10 +1,10 @@
 class Store {
     constructor() {
-        this.store = { test: 69 }
+        this.store = { }
     }
 
     addState(newStateObject) {
-        this.store = { ...this.store, ...{hei:33}, ...newStateObject }
+        this.store = { ...this.store, ...newStateObject }
     }
 
     getState() {
