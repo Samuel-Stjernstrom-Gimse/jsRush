@@ -1,4 +1,4 @@
-class Store {
+class Stash {
     constructor() {
         this.store = { }
     }
@@ -12,4 +12,5 @@ class Store {
     }
 }
 
-export const store =  new Store
+const stash =  new Stash
+export { stash }

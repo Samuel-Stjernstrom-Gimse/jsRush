@@ -1,0 +1,14 @@
+{
+  "name": "js-rush",
+  "version": "1.1.2",
+  "main": "rush.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel Stjernstrøm-Gimse",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "js-rush": "^1.0.0"
+  }
+}

@@ -1,5 +1,5 @@
-import Construct from "./construct.js";
-import State from "./state.js";
+import { Construct } from "./construct.js";
+import { State } from "./state.js";
 
 /**
  * A class representing a Component, which extends from the `Construct` class.
@@ -85,7 +85,6 @@ class Component extends Construct {
      * @param {Function} callback - The callback function to invoke when the event is triggered.
      */
     attachEvent(target, listener, callback) {
-
         const element = this.shadowRoot.querySelector(`${target}`);
         const eventHandler = () => {
             callback();
@@ -116,4 +115,4 @@ class Component extends Construct {
     }
 }
 
-export default Component;
+export {Component};

@@ -1,4 +1,4 @@
-import sharedStyles from "../misc/shadowStyles.js";
+import { sharedStyles } from "./shadowStyles.js";
 /**
  * Base component class for creating custom elements with child component management.
  */
@@ -105,16 +105,16 @@ class Construct extends HTMLElement {
         // Function to clean the HTML by removing custom elements
         const cleanHTML = (html) => {
             const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = html;
+            //tempDiv.innerHTML = html;
 
             // Remove custom elements from the HTML content
             tempDiv.querySelectorAll('*').forEach(el => {
                 if (isCustomElement(el.tagName)) {
-                    el.replaceWith(document.createComment(`custom-element ${el.tagName}`));
+                    //el.replaceWith(document.createComment(`custom-element ${el.tagName}`));
                 }
             });
 
-            return tempDiv.innerHTML;
+            return html //tempDiv.innerHTML;
         };
 
         // Only update if cleaned HTML content is different
@@ -153,7 +153,7 @@ class Construct extends HTMLElement {
             });
 
             // Re-enable constructor behavior
-            this._skipConstructor = false;
+            this._skipConstructor = true;
 
             // Reapply styles if they are part of the shadow DOM
             if (this._styleElement) {
@@ -164,4 +164,4 @@ class Construct extends HTMLElement {
 
 }
 
-export default Construct;
+export { Construct };

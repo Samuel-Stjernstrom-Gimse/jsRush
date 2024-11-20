@@ -1,4 +1,5 @@
 const sharedStyles = new CSSStyleSheet();
+
 sharedStyles.replaceSync(`
     :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -99,4 +100,4 @@ button:focus-visible {
 
 `);
 
-export default sharedStyles;
+export { sharedStyles };
