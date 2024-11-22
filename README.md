@@ -18,7 +18,7 @@ To create a custom component, extend the `Component` class. Here’s an example:
 
 ```js
 class MyComponent extends Component {
-    counter = new State(0)
+    counter = this.newState(0)
     
     render() {
         this.html(`
@@ -79,6 +79,7 @@ this.selectAll('.img-cone')
 ```js
 this.params = new State({ name: 'samuel', params: '' });
 this.subState = new State(0);
+counter = this.newState(33) // add the state to the component automaticly
 ```
 
 Whenever `subState.value` or `params.value` changes, the component re-renders automatically.
