@@ -20,10 +20,6 @@ To create a custom component, extend the `Component` class. Here’s an example:
 class MyComponent extends Component {
     counter = new State(0)
     
-    handleClick() {
-        this.counter.value++;
-    }
-    
     render() {
         this.html(`
             <div>
@@ -31,7 +27,7 @@ class MyComponent extends Component {
                 <button id="btn">count is: ${this.counter.value}</button>
             </div>
         `)
-        this.attachEvent('#btn', 'click', () => this.handleClick());
+        this.attachEvent('#btn', 'click', () => this.counter.value++);
     }
 }
 ```
