@@ -18,45 +18,33 @@ To create a custom component, extend the `Component` class. Here’s an example:
 
 ```js
 class MyComponent extends Component {
+    counter = new State(0)
+    
     handleClick() {
-        this.subState.value++;
-        const imgCone = this.select('#img-cone');
-
-        imgCone.style.transform = 'scale(1.1)';
-        setTimeout(() => imgCone.style.transform = 'scale(1)', 100);
+        this.counter.value++;
     }
-
+    
     render() {
-        this.css(`
-            div {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-            
-            img {
-                height: 10rem;
-                transition: 0.1s;
-            }
-            
-            img:hover {
-                filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.8)); /* Orange glow effect */
-            }
-
-        `);
-
         this.html(`
             <div>
-                <img id="img-cone" src="https://www.svgrepo.com/show/10031/traffic-cone.svg" alt="cone">
                 <h1>${this.params.value}</h1>
-                <button id="btn">count is ${this.subState.value} </button>
+                <button id="btn">count is: ${this.counter.value}</button>
             </div>
         `)
-
         this.attachEvent('#btn', 'click', () => this.handleClick());
     }
 }
+```
+
+defining the html tag
+
+```js
+    customElements.define('rush-counter', MyComponent);
+```
+
+```html
+    <rush-counter params="Hello jsRush!"></rush-counter>
+
 ```
 
 ---
@@ -79,11 +67,13 @@ this.attachEvent('#btn', 'click', () => this.handleClick());
 This adds a click listener to the button with the ID `btn`.
 
 ### **`this.select(target)`**
+### **`this.selectAll(targets)`**
 This method is used to select elements within the component’s shadow DOM.
 
 Example:
 ```js
 this.select('#img-cone')
+this.selectAll('.img-cone')
 ```
 
 ### **`State Management (subState & params)`**
@@ -110,7 +100,7 @@ Example:
 ```js
 this.html(`
     <h1>${this.params.value}</h1>
-    <button id="btn">count is ${this.subState.value}</button>
+    <button id="btn">count is ${this.state.value}</button>
 `);
 ```
 Here, the values of `params.value` and `subState.value` will be displayed in the HTML.
@@ -147,20 +137,6 @@ sharedStyles.replaceSync(`
 
 ## **Attributes & Observed Attributes**
 
-You can listen for changes to specific attributes using `observedAttributes` and `attributeChangedCallback`:
-
-```js
-static get observedAttributes() {
-    return ['params'];
-}
-
-attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'params') {
-        this.params.value = newValue;
-    }
-}
-```
-
 When the `params` attribute changes, the `attributeChangedCallback` is triggered, and you can update the component’s state.
 
 ---
@@ -169,37 +145,6 @@ When the `params` attribute changes, the `attributeChangedCallback` is triggered
 
 The `State` class is used for reactive state management. It allows you to subscribe to changes in the state and automatically re-render the component when the state changes.
 
-```js
-class State {
-    constructor(initialState) {
-        this._state = initialState;
-        this.subscribers = [];
-    }
-
-    get value() {
-        return this._state;
-    }
-
-    set value(newValue) {
-        if (newValue !== this._state) {
-            this._state = newValue;
-            this.notify();
-        }
-    }
-
-    subscribe(subscriber) {
-        this.subscribers.push(subscriber);
-    }
-
-    subRender(subscriber) {
-        this.subscribers.push(() => subscriber.render());
-    }
-
-    notify() {
-        this.subscribers.forEach(subscriber => subscriber());
-    }
-}
-```
 
 - `get value`: Retrieves the current state.
 - `set value`: Updates the state and notifies all subscribers if the value changes.
