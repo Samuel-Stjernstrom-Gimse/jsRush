@@ -36,7 +36,7 @@ defining the html tag
 ```js
     customElements.define('rush-counter', MyComponent);
 ```
-
+using html
 ```html
     <rush-counter params="Hello jsRush!"></rush-counter>
 
