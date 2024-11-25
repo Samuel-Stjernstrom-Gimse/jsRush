@@ -2,6 +2,8 @@
 
 jsRush is a lightweight framework for creating web components. It’s designed to be simple and easy to use with minimal setup. The goal is to help you create reactive, interactive components without requiring complex tools or build steps.
 
+tsRush is coming..!
+
 ## **Core Concepts**
 
 js-Rush revolves around three main classes:
